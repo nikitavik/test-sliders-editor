@@ -1,0 +1,60 @@
+{
+    "name": "test-md-editor",
+    "version": "1.0.0",
+    "description": "Test assigment",
+    "main": "index.ts",
+    "scripts": {
+        "dev": "vite",
+        "compile": "tsc --noEmit --incremental",
+        "lint-eslint": "eslint --ext .tsx --ext .ts src/",
+        "lint-stylelint": "stylelint \"**/*.scss\"",
+        "lint": "npm run lint-eslint && npm run lint-stylelint && npm run compile",
+        "lint:fix": "npm run lint-eslint -- --fix && npm run lint-stylelint -- --fix"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nikitavik/test-md-editor.git"
+    },
+    "author": "Nikita Kornilov <kornilov.nm@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/nikitavik/test-md-editor/issues"
+    },
+    "homepage": "https://github.com/nikitavik/test-md-editor#readme",
+    "dependencies": {
+        "autoprefixer": "^10.4.20",
+        "clsx": "^2.1.1",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "stylelint-order": "^6.0.4",
+        "stylelint-prettier": "^5.0.2",
+        "stylelint-scss": "^6.4.1",
+        "zustand": "^4.5.4"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.7.0",
+        "@types/node": "^20.14.11",
+        "@types/react": "^18.3.3",
+        "@types/react-dom": "^18.3.0",
+        "@vitejs/plugin-react": "^4.3.1",
+        "eslint": "^8.57.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-airbnb-typescript": "^18.0.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-define-config": "^2.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "eslint-plugin-react": "^7.34.4",
+        "globals": "^15.8.0",
+        "postcss-scss": "^4.0.9",
+        "prettier": "3.3.3",
+        "sass": "^1.77.8",
+        "stylelint": "^16.7.0",
+        "stylelint-config-recommended": "^14.0.1",
+        "stylelint-config-standard": "^36.0.1",
+        "typescript": "^5.5.3",
+        "typescript-eslint": "^7.16.1",
+        "vite": "^5.3.4",
+        "vite-plugin-checker": "^0.7.2",
+        "vite-plugin-stylelint": "^5.3.1"
+    }
+}
