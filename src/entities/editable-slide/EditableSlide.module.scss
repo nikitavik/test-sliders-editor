@@ -1,0 +1,35 @@
+@use '@app/styles/variables';
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(-2rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slideRoot {
+    background-color: variables.$background-secondary;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+    min-height: 10rem;
+    animation: appear 0.5s ease-in-out forwards;
+}
+
+.slideTitle {
+    font-size: 0.875rem;
+    line-height: 1.2;
+    font-weight: 400;
+    color: variables.$text-gray;
+}
+
+.textBox {
+    padding: 0;
+    outline: none;
+    color: variables.$text-white;
+}

@@ -1,7 +1,7 @@
 {
-    "name": "test-md-editor",
+    "name": "test-sliders-editor",
     "version": "1.0.0",
-    "description": "Test assigment",
+    "description": "Sliders Editor with rich text editor",
     "main": "index.ts",
     "scripts": {
         "dev": "vite",
@@ -26,13 +26,18 @@
         "clsx": "^2.1.1",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "slate": "^0.110.2",
+        "slate-history": "^0.110.3",
+        "slate-react": "^0.110.3",
         "stylelint-order": "^6.0.4",
         "stylelint-prettier": "^5.0.2",
         "stylelint-scss": "^6.4.1",
+        "vite-plugin-svgr": "^4.2.0",
         "zustand": "^4.5.4"
     },
     "devDependencies": {
         "@eslint/js": "^9.7.0",
+        "@types/lodash": "^4.17.13",
         "@types/node": "^20.14.11",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",

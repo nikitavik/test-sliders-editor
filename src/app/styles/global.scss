@@ -1,0 +1,16 @@
+@use './variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: variables.$inter-font-family;
+    box-sizing: border-box;
+    border: none;
+    background-color: transparent;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
