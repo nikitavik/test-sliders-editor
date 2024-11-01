@@ -1,10 +1,5 @@
-import { BulletElement, CustomEditor } from '@app/lib/slate';
-import { Element, Node, Transforms, Path, Editor } from 'slate';
-
-const EMPTY_BULLET_ELEMENT: BulletElement = {
-    type: 'bullet',
-    children: [{ text: '' }],
-};
+import { CustomEditor } from '@app/lib/slate';
+import { Element, Node, Transforms, Path } from 'slate';
 
 export const withSlides = (editor: CustomEditor) => {
     const { normalizeNode } = editor;
@@ -12,30 +7,55 @@ export const withSlides = (editor: CustomEditor) => {
     editor.normalizeNode = ([node, path]) => {
         const isTitle = path.length === 1 && path[0] === 0;
 
+        if (Element.isElement(node) && node.type === 'heading') {
+            const nextPath = Path.next(path);
+            const previousPath = Path.previous(path);
+
+            const nextNodeExists = Node.has(editor, nextPath);
+            const prevNodeExists = Node.has(editor, previousPath);
+
+            if (!nextNodeExists) {
+                Transforms.insertNodes(
+                    editor,
+                    { type: 'bullet', children: [{ text: '' }] },
+                    { at: nextPath }
+                );
+            } else {
+                const nextNode = Node.get(editor, nextPath);
+                const isNextBullet =
+                    nextNodeExists && Element.isElement(nextNode) && nextNode.type === 'bullet';
+                if (!isNextBullet) {
+                    Transforms.insertNodes(
+                        editor,
+                        { type: 'bullet', children: [{ text: '' }] },
+                        { at: nextPath }
+                    );
+                }
+            }
+            if (prevNodeExists) {
+                const prevNode = Node.get(editor, previousPath);
+                const isPrevBullet =
+                    prevNodeExists && Element.isElement(prevNode) && prevNode.type === 'bullet';
+                const isPrevTitle =
+                    prevNodeExists && Element.isElement(prevNode) && prevNode.type === 'title';
+
+                if (!isPrevBullet && !isPrevTitle) {
+                    Transforms.insertNodes(
+                        editor,
+                        { type: 'bullet', children: [{ text: '' }] },
+                        { at: path }
+                    );
+                }
+            }
+        }
+
         if (isTitle) {
             if (Element.isElement(node) && node.type !== 'title') {
-                Transforms.setNodes(editor, { type: 'title' }, { at: path });
-            }
-        } else {
-            if (Element.isElement(node) && node.type === 'heading') {
-                // TODO: Add bullet insertion
-                // const nextPath = Path.next(path);
-                //
-                // const nextNodeExists = Editor.hasPath(editor, nextPath);
-                //
-                // if (nextNodeExists) {
-                //     const nextNode = Node.get(editor, nextPath);
-                //     const isNextBullet =
-                //         nextNodeExists && Element.isElement(nextNode) && nextNode.type === 'bullet';
-                //
-                //     console.log(path, 'path', nextPath, 'next path');
-                //
-                //     if (!isNextBullet) {
-                //         Transforms.insertNodes(editor, EMPTY_BULLET_ELEMENT, { at: nextPath });
-                //     }
-                // } else {
-                //     Transforms.insertNodes(editor, EMPTY_BULLET_ELEMENT, { at: nextPath });
-                // }
+                Transforms.setNodes(
+                    editor,
+                    { type: 'title', children: node.children },
+                    { at: path }
+                );
             }
         }
 

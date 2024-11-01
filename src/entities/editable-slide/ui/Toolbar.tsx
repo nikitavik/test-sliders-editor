@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Editor, Element, Transforms } from 'slate';
 import { useFocused, useSlate } from 'slate-react';
 import clsx from 'clsx';
@@ -13,7 +13,6 @@ import styles from './Toolbar.module.scss';
 
 export const Toolbar: FC = () => {
     const editor = useSlate();
-
     const isFocused = useFocused();
 
     const handleBulletFormat = () => {
@@ -24,7 +23,8 @@ export const Toolbar: FC = () => {
             { type: 'bullet' },
             {
                 at: editor.selection,
-                match: (n) => Element.isElement(n) && Editor.isBlock(editor, n),
+                match: (n) =>
+                    Element.isElement(n) && Editor.isBlock(editor, n) && n.type !== 'title',
             }
         );
     };
@@ -37,7 +37,8 @@ export const Toolbar: FC = () => {
             { type: 'heading' },
             {
                 at: editor.selection,
-                match: (n) => Element.isElement(n) && Editor.isBlock(editor, n),
+                match: (n) =>
+                    Element.isElement(n) && Editor.isBlock(editor, n) && n.type !== 'title',
             }
         );
     };

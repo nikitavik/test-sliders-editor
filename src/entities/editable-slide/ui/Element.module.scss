@@ -19,10 +19,16 @@
 }
 
 .placeholder {
+    transition: opacity 250ms ease;
     position: absolute;
     color: variables.$text-light-gray;
     pointer-events: none;
     user-select: none;
+    opacity: 1;
+
+    &.isHidden {
+        opacity: 0;
+    }
 }
 
 .listItem {

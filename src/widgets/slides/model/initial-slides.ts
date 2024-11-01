@@ -1,23 +1,27 @@
-import { SlideModel } from '@entities/model/slide';
+import { SlideModel } from '@entities/editable-slide/model/slide';
 
 export const initialSlides: SlideModel[] = [
-    // {
-    //     title: 'Slide 1',
-    //     value: [
-    //         {
-    //             type: 'title',
-    //             children: [{ text: 'How to use “from scratch” mode?' }],
-    //         },
-    //         {
-    //             type: 'bullet',
-    //             children: [{ text: 'Bullet1' }],
-    //         },
-    //         {
-    //             type: 'heading',
-    //             children: [{ text: 'Bullet1' }],
-    //         },
-    //     ],
-    // },
+    {
+        title: 'How to use “from scratch” mode?',
+        value: [
+            {
+                type: 'title',
+                children: [{ text: 'How to use “from scratch” mode?' }],
+            },
+            {
+                type: 'bullet',
+                children: [
+                    {
+                        text: 'Elevate your message by attaching up to 3 images, using the paperclip icon in the upper right corner',
+                    },
+                ],
+            },
+            {
+                type: 'bullet',
+                children: [{ text: 'Click "Design this slide" to get your slide designed' }],
+            },
+        ],
+    },
     {
         title: 'Slide 2',
         value: [
@@ -27,13 +31,4 @@ export const initialSlides: SlideModel[] = [
             },
         ],
     },
-    // {
-    //     title: 'Slide 3',
-    //     value: [
-    //         {
-    //             type: 'heading',
-    //             children: [{ text: '' }],
-    //         },
-    //     ],
-    // },
 ];
