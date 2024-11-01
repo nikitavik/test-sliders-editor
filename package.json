@@ -13,14 +13,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/nikitavik/test-md-editor.git"
+        "url": "git+https://github.com/nikitavik/test-sliders-editor.git"
     },
     "author": "Nikita Kornilov <kornilov.nm@gmail.com>",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/nikitavik/test-md-editor/issues"
+        "url": "https://github.com/nikitavik/test-sliders-editor/issues"
     },
-    "homepage": "https://github.com/nikitavik/test-md-editor#readme",
+    "homepage": "https://github.com/nikitavik/test-sliders-editor#readme",
     "dependencies": {
         "autoprefixer": "^10.4.20",
         "clsx": "^2.1.1",
@@ -32,8 +32,7 @@
         "stylelint-order": "^6.0.4",
         "stylelint-prettier": "^5.0.2",
         "stylelint-scss": "^6.4.1",
-        "vite-plugin-svgr": "^4.2.0",
-        "zustand": "^4.5.4"
+        "vite-plugin-svgr": "^4.2.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.7.0",
@@ -49,7 +48,6 @@
         "eslint-define-config": "^2.1.0",
         "eslint-plugin-prettier": "^5.2.1",
         "eslint-plugin-react": "^7.34.4",
-        "globals": "^15.8.0",
         "postcss-scss": "^4.0.9",
         "prettier": "3.3.3",
         "sass": "^1.77.8",

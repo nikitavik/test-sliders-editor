@@ -1,13 +1,13 @@
 import { FC, useState } from 'react';
 
-import { EditableSlide } from '@entities/editable-slide/EditableSlide';
+import { EditableSlide } from '@entities/editable-slide/ui/EditableSlide';
+
+import { initialSlides } from '../model/initial-slides';
+import { appendNewSlide } from '../lib/slide-creator';
 
 import { AddSlideButton } from './AddSlideButton';
 
 import styles from './Slides.module.scss';
-
-import { initialSlides } from '../model/initial-slides';
-import { appendNewSlide } from '../lib/slide-creator';
 
 export const Slides: FC = () => {
     const [slides, setSlides] = useState(initialSlides);

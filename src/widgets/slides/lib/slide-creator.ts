@@ -3,7 +3,7 @@ import { Descendant } from 'slate';
 
 const EMPTY_SLIDE_VALUE: Descendant[] = [
     {
-        type: 'paragraph',
+        type: 'title',
         children: [{ text: '' }],
     },
 ];

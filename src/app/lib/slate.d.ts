@@ -4,22 +4,26 @@ import { HistoryEditor } from 'slate-history';
 
 export type CustomEditor = BaseEditor & ReactEditor & HistoryEditor;
 
-export type ParagraphElement = {
-    type: 'paragraph';
+export type FormattedText = { text: string };
+
+export type CustomText = FormattedText;
+
+export type TitleElement = {
+    type: 'title';
     children: CustomText[];
 };
 
 export type HeadingElement = {
     type: 'heading';
-    level: number;
     children: CustomText[];
 };
 
-export type FormattedText = { text: string; bold?: true };
+export type BulletElement = {
+    type: 'bullet';
+    children: CustomText[];
+};
 
-export type CustomText = FormattedText;
-
-export type CustomElement = ParagraphElement | HeadingElement;
+export type CustomElement = TitleElement | HeadingElement | BulletElement;
 
 declare module 'slate' {
     interface CustomTypes {
