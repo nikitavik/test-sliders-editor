@@ -10,9 +10,11 @@ import { Leaf } from './Leaf';
 import { ElementPresenter } from './ElementPresenter';
 import { Toolbar } from './Toolbar';
 
-import { withSlides } from '../lib/withFormattedMarkup';
+import { withFormat } from '../lib/with-format';
+import { transformChildren } from '../lib/transform';
 
 import styles from './EditableSlide.module.scss';
+
 interface EditableSlideProps extends SlideModel {}
 
 export const EditableSlide: FC<EditableSlideProps> = (props) => {
@@ -46,8 +48,12 @@ export const EditableSlide: FC<EditableSlideProps> = (props) => {
         }
     };
 
+    const handleBlur = () => {
+        console.log(transformChildren(editor.children));
+    };
+
     return (
-        <Slate editor={withSlides(editor)} initialValue={value}>
+        <Slate editor={withFormat(editor)} initialValue={value}>
             <div className={styles.slideRoot}>
                 <h4 className={styles.slideTitle}>{title}</h4>
 
@@ -58,6 +64,7 @@ export const EditableSlide: FC<EditableSlideProps> = (props) => {
                     renderElement={renderElement}
                     renderLeaf={renderLeaf}
                     onPaste={handlePaste}
+                    onBlur={handleBlur}
                     onKeyDown={(event) => {
                         if (event.key === 'Enter') {
                             const { selection } = editor;

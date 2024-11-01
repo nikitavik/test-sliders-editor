@@ -15,13 +15,13 @@
 .slideRoot {
     position: relative;
     background-color: variables.$background-secondary;
-    padding: 1rem;
     border-radius: 1rem;
     margin-bottom: 0.5rem;
     min-height: 10rem;
     animation: appear 0.5s ease-in-out forwards;
     display: flex;
     flex-direction: column;
+    padding: 1rem 1rem 4.5rem;
 }
 
 .slideTitle {

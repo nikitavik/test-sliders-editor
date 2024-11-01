@@ -1,7 +1,7 @@
 import { CustomEditor } from '@app/lib/slate';
 import { Element, Node, Transforms, Path } from 'slate';
 
-export const withSlides = (editor: CustomEditor) => {
+export const withFormat = (editor: CustomEditor) => {
     const { normalizeNode } = editor;
 
     editor.normalizeNode = ([node, path]) => {
