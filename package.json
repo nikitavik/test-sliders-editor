@@ -4,6 +4,7 @@
     "description": "Sliders Editor with rich text editor",
     "main": "index.ts",
     "scripts": {
+        "build": "tsc -b && vite build",
         "dev": "vite",
         "compile": "tsc --noEmit --incremental",
         "lint-eslint": "eslint --ext .tsx --ext .ts src/",
