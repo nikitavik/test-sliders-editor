@@ -47,12 +47,12 @@ const BulletElement = (props: RenderElementProps) => {
     const path = ReactEditor.findPath(editor, element);
     const previousPath = Path.previous(path);
 
-    const previousNodeExists = Editor.hasPath(editor, previousPath);
+    const isPreviousNodeExists = Editor.hasPath(editor, previousPath);
 
     const previousNode = Node.get(editor, previousPath);
 
     const isPreviousBullet =
-        previousNodeExists && Element.isElement(previousNode) && previousNode.type === 'bullet';
+        isPreviousNodeExists && Element.isElement(previousNode) && previousNode.type === 'bullet';
 
     return (
         <li {...attributes} className={styles.listItem}>

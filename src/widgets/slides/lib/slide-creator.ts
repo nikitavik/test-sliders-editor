@@ -1,4 +1,4 @@
-import { SlideModel } from '@entities/model/slide';
+import { SlideModel } from '@entities/editable-slide/model/slide';
 import { Descendant } from 'slate';
 
 const EMPTY_SLIDE_VALUE: Descendant[] = [

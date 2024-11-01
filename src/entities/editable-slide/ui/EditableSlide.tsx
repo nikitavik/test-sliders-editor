@@ -1,17 +1,18 @@
-import { FC, useCallback, useMemo } from 'react';
+import { ClipboardEventHandler, FC, useCallback, useMemo } from 'react';
 import { Editable, RenderElementProps, RenderLeafProps, Slate, withReact } from 'slate-react';
 import { withHistory } from 'slate-history';
 import { createEditor, Range, Transforms } from 'slate';
+
+import { SlideModel } from '@entities/editable-slide/model/slide';
+import { BulletElement } from '@app/lib/slate';
 
 import { Leaf } from './Leaf';
 import { ElementPresenter } from './ElementPresenter';
 import { Toolbar } from './Toolbar';
 
-import { SlideModel } from '../../model/slide';
 import { withSlides } from '../lib/withFormattedMarkup';
 
 import styles from './EditableSlide.module.scss';
-
 interface EditableSlideProps extends SlideModel {}
 
 export const EditableSlide: FC<EditableSlideProps> = (props) => {
@@ -25,6 +26,26 @@ export const EditableSlide: FC<EditableSlideProps> = (props) => {
     );
     const renderLeaf = useCallback((renderProps: RenderLeafProps) => <Leaf {...renderProps} />, []);
 
+    const handlePaste: ClipboardEventHandler<HTMLDivElement> = (event) => {
+        event.preventDefault();
+
+        const text = event.clipboardData.getData('text/plain');
+        const processedText = text.split('\n').filter((line) => line.trim() !== '');
+
+        if (processedText.length === 0) return;
+
+        const { selection } = editor;
+
+        const content: BulletElement[] = processedText.map((line) => ({
+            type: 'bullet',
+            children: [{ text: line }],
+        }));
+
+        if (selection) {
+            Transforms.insertFragment(editor, content);
+        }
+    };
+
     return (
         <Slate editor={withSlides(editor)} initialValue={value}>
             <div className={styles.slideRoot}>
@@ -36,6 +57,7 @@ export const EditableSlide: FC<EditableSlideProps> = (props) => {
                     className={styles.textBox}
                     renderElement={renderElement}
                     renderLeaf={renderLeaf}
+                    onPaste={handlePaste}
                     onKeyDown={(event) => {
                         if (event.key === 'Enter') {
                             const { selection } = editor;
